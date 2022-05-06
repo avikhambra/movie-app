@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+// rfce
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from "react";
+import Home from './components/Home';
+import {Login} from './Routing';
+import {New} from './Routing';
+
+//import Main from "./components/Main";
+import NavBar from "./components/NavBar";
+
+import {PageNotFound} from './Routing';
+
+import {Route , Switch , Redirect} from 'react-router-dom';
+
+//import Routing from "./Routing";
+// npm i react-router-dom
+function App(){
+    return(
+        <>
+            <NavBar></NavBar>
+
+            <Switch>
+                <Route path = "/home">
+                  <Home></Home>
+                </Route>
+
+                <Route path = "/login">
+                   <Login></Login>  
+                </Route> 
+                
+                <Route path = "/new">
+                    <New></New>
+                </Route>
+
+
+                <Route>
+                   <Redirect from = "/" to = "/home"></Redirect> 
+                </Route>  
+
+
+                <Route>
+                   <PageNotFound></PageNotFound>
+                </Route>
+           
+                
+
+            </Switch>
+            
+       
+        </>
+    )
 }
 
 export default App;
